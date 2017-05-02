@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans   xmlns="http://www.springframework.org/schema/beans"
+         xmlns:beans="http://www.springframework.org/schema/beans"
+         xmlns:p="http://www.springframework.org/schema/p"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:context="http://www.springframework.org/schema/context"
+         xmlns:aop="http://www.springframework.org/schema/aop"
+         xmlns:mvc="http://www.springframework.org/schema/mvc"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd"
+         default-autowire="byName">
+
+    <context:component-scan base-package="org.walkframework.base.mvc.controller" />
+    <context:component-scan base-package="com.rdgs.web.mvc.controller" />
+    <!-- 启用Spring MVC 注解 -->
+    <context:annotation-config />
+
+    <!-- 参数绑定一：添加最先想要匹配的参数类型解决器 -->
+    <bean id="requestMappingHandlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="synchronizeOnSession" value="true"/><!--线程安全的访问session-->
+        <property name="argumentResolvers"><!--配置最先想要匹配的参数类型解决器-->
+            <list>
+                <bean class="org.walkframework.base.system.bind.resolver.InParamMethodArgumentResolver"/>	<!--请求参数解决-->
+                <bean class="org.walkframework.base.system.bind.resolver.PaginationMethodArgumentResolver"/><!--分页参数解决-->
+            </list>
+        </property>
+        <property name="messageConverters">
+            <list>
+                <bean class="org.walkframework.base.system.converter.StringHttpMessageConverter"/><!-- 启用字符串转换功能，防止乱码 -->
+                <bean class="org.walkframework.base.system.converter.JsonHttpMessageConverter" /><!-- 返回值对象转json -->
+            </list>
+        </property>
+    </bean>
+
+    <!-- 参数绑定二：调整适配器，添加默认参数解决器 -->
+    <bean class="org.walkframework.base.system.bind.RequestMappingHandlerAdapterAdjust">
+        <property name="requestMappingHandlerAdapter" ref="requestMappingHandlerAdapter"/>
+    </bean>
+
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <!-- 本地化拦截器 -->
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="language"/>
+        </bean>
+
+        <!-- 表单校验 -->
+        <bean class="org.walkframework.base.system.interceptor.ValidXmlInterceptor"/>
+
+        <!-- 请求来源主机校验 -->
+        <bean class="org.walkframework.base.system.interceptor.HostCheckInterceptor"/>
+
+
+    </mvc:interceptors>
+
+    <!-- 启用注解驱动，自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter，一定要放在requestMappingHandlerAdapter之后-->
+    <mvc:annotation-driven/>
+
+    <!-- 对转向页面的路径解析 prefix：前缀 suffix：后缀 -->
+    <bean p:prefix="/pages/" p:suffix=".jsp" class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
+
+    <!-- 文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--one of the properties available;the maximum upload size in bytes 100M-->
+        <property name="maxUploadSize" value="104857600"/>
+        <property name="defaultEncoding" value="utf-8" />
+        <property name="maxInMemorySize" value="4096"/>
+    </bean>
+
+
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/img/**" location="/img/" />
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/data/**" location="/data/" />
+</beans>

@@ -1,0 +1,72 @@
+<ion-view >
+    <div class="rd-search-header bar bar-header item-input-inset" >
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios-search-strong placeholder-icon"></i>
+            <input type="search" placeholder="搜索" ng-model="searchName" ng-change="search(searchName)">
+        </label>
+        <button class="rd-search-btn button button-clear icon ion-search"></button>
+    </div>
+    <ion-content class="has-header">
+        <div id="banner">
+            <img src="img/banner.png" />
+        </div>
+        <div class="areaheader"><div class="col headertitle">当季流行</div></div>
+        <ion-scroll direction="x" zooming="false" style="height:10rem;">
+            <div style="height:100%" class="row">
+                <a ng-repeat="prod in mainSvcData.hotProdList" class="col" href="#/prodinfo/{{prod.prod_id}}">
+                    <div class="prodcard-big" style="background-size:100%;background-image:url('img/prod/{{prod.main_img_src}}') ">
+                        <div class="prodinfo1">
+                            <div class="prodname col-xs-12">{{prod.prod_name}}</div>
+                            <div class="prodprice col-xs-6">{{prod.prod_price|currency:"￥"}}&nbsp;{{prod.prod_price_unit}}</div>
+                            <div class="prodsold col-xs-6">已售出&nbsp;{{prod.prod_sold}}</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </ion-scroll>
+
+        <div class="row areaheader"><div class="col headertitle">最新上架</div><div class="headermore col "><a href="#/prodlist/new">更多<i class="icon ion-chevron-right"></i></a></div></div>
+        <div>
+            <div ng-repeat="prod in mainSvcData.newProdList" ng-if="$index%2===0" class="row">
+                <div ng-if="$index<mainSvcData.newProdList.length" class="col col-50" >
+                    <div class="prodcard">
+                        <a href="#/prodinfo/{{prod.prod_id}}">
+                            <div class="prodimg"><img src="img/prod/{{prod.main_img_src}}" /></div>
+                            <div class="prodinfo">
+                                <div class="prodname">{{prod.prod_name}}</div>
+                                <div class="proddesc">{{prod.prod_desc}}</div>
+                                <div class="prodprice">{{prod.prod_price|currency:"￥"}}&nbsp;{{prod.prod_price_unit}}</div>
+                                <div class="prodsold">已售出&nbsp;{{prod.prod_sold}}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div ng-if="($index+1)<mainSvcData.newProdList.length" class="col col-50" >
+                    <div class="prodcard" >
+                        <a class="" href="#/prodinfo/{{mainSvcData.newProdList[$index+1].prod_id}}">
+                            <div class="prodimg"><img src="img/prod/{{mainSvcData.newProdList[$index+1].main_img_src}}" /></div>
+                            <div class="prodinfo">
+                                <div class="prodname">{{mainSvcData.newProdList[$index+1].prod_name}}</div>
+                                <div class="proddesc">{{mainSvcData.newProdList[$index+1].prod_desc}}</div>
+                                <div class="prodprice">{{mainSvcData.newProdList[$index+1].prod_price|currency:"￥"}}&nbsp;{{mainSvcData.newProdList[$index+1].prod_price_unit}}</div>
+                                <div class="prodsold">已售出&nbsp;{{mainSvcData.newProdList[$index+1].prod_sold}}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footerarea">
+            -&nbsp;本页面由睿达鲜汇提供&nbsp;-
+        </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="bar bar-dark rd-footer">
+        <div class="button-bar">
+            <a class="button button-icon" href="#/main"><i class="icon ion-ios-home"></i></a>
+            <a class="button button-icon"><i class="icon ion-ios-heart"></i></a>
+            <a class="button button-icon"><i class="icon ion-android-cart"></i></a>
+            <a class="button button-icon"><i class="icon ion-android-person"></i></a>
+        </div>
+    </ion-footer-bar>
+</ion-view>

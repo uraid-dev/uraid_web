@@ -1,0 +1,44 @@
+<ion-view>
+    <div class="rd-search-header bar bar-header item-input-inset" >
+        <button class="button button-clear icon ion-chevron-left">返回</button>
+        <span class="title">{{productInfoData.productMainInfo.prod_name}}</span>
+    </div>
+    <div class="bar bar-subheader">
+        <div id="divProdinfoTabs" class="button-bar prodinfotabs">
+            <a class="button button-clear cur-activated" ng-click="selectTab(0)">详细介绍</a>
+            <a class="button button-clear" ng-click="selectTab(1)">订单评价</a>
+            <a class="button button-clear" ng-click="selectTab(2)">价格变动</a>
+        </div>
+    </div>
+    <ion-content class="has-subheader">
+        <ion-slide-box show-pager="true" auto-play="false" does-continue="true" ng-if="productInfoData.productMainInfo.prod_main_pics.length">
+            <ion-slide ng-repeat="mainPicSrc in productInfoData.productMainInfo.prod_main_pics track by $index">
+                <img class="slide-img" src="img/prod/{{productInfoData.productMainInfo.prod_main_pics[$index]}}" />
+            </ion-slide>
+        </ion-slide-box>
+        <div class="prodmaininfo">
+            <div class="row">
+                <div class="col col-80 proddesc">{{productInfoData.productMainInfo.prod_desc}}</div>
+                <div class="col col-20 prodaddfav"><button class=" prodaddfavbtn button button-large button-full button-clear button-icon ion-ios-heart"></button></div>
+            </div>
+        </div>
+
+        <div id="footerarea">
+            -&nbsp;本页面由睿达鲜汇提供&nbsp;-
+        </div>
+    </ion-content>
+    <div class="bar bar-light bar-subfooter" style="height:4rem">
+        <div class="button-bar" style="height:4rem">
+            <button class="button button-energized button-full icon-left ion-ios-cart-outline">加入购物车</button>
+            <button class="button button-assertive button-full icon-right ion-cash">立即购买</button>
+        </div>
+    </div>
+    <ion-footer-bar class="bar bar-dark rd-footer">
+        <div class="button-bar">
+            <a class="button button-icon" href="#/main"><i class="icon ion-android-home"></i></a>
+            <a class="button button-icon"><i class="icon ion-ios-heart"></i></a>
+            <a class="button button-icon"><i class="icon ion-android-cart"></i></a>
+            <a class="button button-icon"><i class="icon ion-android-person"></i></a>
+        </div>
+    </ion-footer-bar>
+</ion-view>

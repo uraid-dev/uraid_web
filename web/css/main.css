@@ -1,0 +1,285 @@
+@media only screen and (min-width: 306px) {
+  html {
+    font-size: 8px;
+  }
+}
+@media only screen and (min-width: 323px) {
+  html {
+    font-size: 10px;
+  }
+}
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+}
+body {
+  margin: 0;
+  font-size: 1.5rem;
+}
+A:link {
+  text-decoration: none;
+}
+A:visited {
+  text-decoration: none;
+}
+A:active {
+  text-decoration: none;
+}
+div.rd-search-header {
+  background: #2f6627;
+  color: white;
+}
+div.rd-search-header label {
+  background-color: #fbffc0;
+}
+div.rd-search-header button.rd-search-btn {
+  color: #fbffc0;
+}
+div.topbar .gobackspan {
+  padding-left: 1rem;
+  width: 100%;
+  text-align: left;
+}
+div.topbar .gobacklink {
+  color: white;
+}
+#bottomnavbar {
+  font-size: 3rem;
+  height: 3rem;
+  line-height: 3rem;
+}
+#bottmnavbar .container {
+  height: 100%;
+  line-height: 100%;
+}
+#bottomnavbar div.footer-nav-item {
+  text-align: center;
+}
+#bottomnavbar div.footer-nav-item a {
+  color: #EEEEEE;
+}
+.page_content {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+div.areaheader {
+  border-left: 4px solid #6a4216;
+  background-color: #ffdbaf;
+  padding: 0;
+  font-weight: bold;
+  height: 2rem;
+  line-height: 2rem;
+  padding-top: auto;
+  padding-bottom: auto;
+  vertical-align: middle;
+  color: #6a4216;
+}
+div.areaheader .headertitle {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0.5rem;
+}
+div.areaheader .headermore {
+  font: inherit;
+  width: 100%;
+  text-align: right;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0.5rem;
+}
+div.areaheader .headermore a {
+  color: #6a4216;
+}
+/** 产品列表展示 start **/
+div.prodcard {
+  width: 100%;
+  padding: 4px;
+  font-size: 0.6rem;
+  background-color: #F0F0F0;
+  border-bottom: 4px solid #E0E0E0;
+  box-shadow: 2px 2px 2px #AAA;
+  border-radius: 4px;
+}
+div.prodcard div.prodimg img {
+  width: 100%;
+}
+div.prodcard div.prodname {
+  color: black;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+div.prodcard div.proddesc {
+  font-size: 0.5rem;
+  color: #222222;
+}
+div.prodcard div.prodprice {
+  color: #6a4216;
+  font-weight: bold;
+}
+div.prodcard div.prodsold {
+  color: gray;
+}
+div.prodcard-big {
+  height: 9rem;
+  width: 13rem;
+  margin-left: 2px;
+  -webkit-background-size: contain;
+  background-size: contain;
+  box-shadow: 2px 2px 2px #AAA;
+  border-radius: 4px;
+  /*border-left: 1px solid @faintColor;*/
+}
+div.prodcard-big div.prodinfo1 {
+  position: relative;
+  left: 0;
+  bottom: -6.8rem;
+  height: 2.2rem;
+  background-color: #4d4d4d;
+  /*filter:alpha(opacity=(@prodInfo1Opacity/0.01));*/
+  -moz-opacity: 0.7;
+  -khtml-opacity: 0.7;
+  opacity: 0.7;
+}
+div.prodcard-big div.prodinfo1 div.prodname {
+  padding-left: 4px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+div.prodcard-big div.prodinfo1 div.prodprice {
+  padding-left: 4px;
+  font-size: 0.8rem;
+  font-weight: bolder;
+  color: #ffdbaf;
+  text-align: left;
+}
+div.prodcard-big div.prodinfo1 div.prodsold {
+  position: relative;
+  bottom: 1.3rem;
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: #929292;
+  text-align: right;
+  padding-right: 2px;
+  padding-bottom: 2px;
+}
+/** 产品列表展示 end **/
+/** 产品详情 start **/
+div.prod_info {
+  width: 100%;
+  padding: 0.2rem;
+}
+div.prod_info div.prod_head {
+  width: 100%;
+}
+div#banner {
+  height: 5rem;
+  background: #2f6627 url("../img/banner.png") no-repeat;
+  background-size: 100%;
+}
+div#banner img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+div#divSearch {
+  width: 100%;
+  height: 100%;
+  margin-top: auto;
+  margin-buttom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: #2f6627;
+}
+div#divSearch select {
+  background-color: #2f6627;
+  border: 0px;
+}
+#txtSearch {
+  padding-left: 1rem;
+  background-color: #fbffc0;
+}
+#searchbtn {
+  color: orange;
+  height: 2.5rem;
+}
+div#footerarea {
+  width: 100%;
+  clear: both;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+/** 水平滚动列表 from github.com, start **/
+/**
+Useage:
+<div class="mobile-featured-carousel">
+  <ul class="mobile-featured-collections clearfix">
+    <li class="mobile-featured-collection">
+            ....
+**/
+.mobile-featured-carousel {
+  margin: 10px 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.mobile-featured-carousel .mobile-featured-collections {
+  padding: 0;
+  margin: 0 15px;
+  white-space: nowrap;
+  list-style-type: none;
+}
+.mobile-featured-carousel .mobile-featured-collection {
+  display: inline-block;
+  /*width: 100%;*/
+  padding: 0;
+  margin: 0;
+}
+/** 水平滚动列表 from github.com, end **/
+div#loadingMask {
+  display: none;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  line-height: 100%;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0;
+  background-color: black;
+  color: lightgray;
+  z-index: 9999;
+  filter: alpha(opacity=50);
+  -moz-opacity: 0.5;
+  -khtml-opacity: 0.5;
+  opacity: 0.5;
+}
+div.prodmaininfo div.proddesc {
+  border-right: 1px solid #F0F0F0;
+  font-size: 1.2rem;
+  color: black;
+  font-weight: bold;
+}
+div.prodmaininfo div.prodaddfav {
+  font-size: 3rem;
+}
+div.prodmaininfo button.prodaddfavbtn {
+  font-size: 2.5rem;
+}
+div.prodinfotabs a.cur-activated {
+  border-bottom: 2px solid orange;
+}
+img.slide-img {
+  width: 100%;
+  height: 15rem;
+  max-height: 15rem;
+}
